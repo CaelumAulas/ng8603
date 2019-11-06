@@ -1,5 +1,5 @@
 <header class="headerGlobal mdl-layout__header">
-  <button class="mdl-layout__drawer-button">
+  <button (click)="mostraMenu()" class="mdl-layout__drawer-button">
     <span class="material-icons"></span>
   </button>
 
@@ -23,7 +23,10 @@
     <!--./Search-->
   </div>
 </header>
-<section class="headerGlobal__menuArea mdl-layout__drawer">
+
+<section class="headerGlobal__menuArea mdl-layout__drawer"
+  [ngClass]="{'headerGlobal__menuArea--active': statusMenu}"
+>
   <span class="mdl-layout-title">
     <img class="headerGlobal__logo" src="assets/img/logo.svg" alt="CMail">
   </span>
@@ -52,4 +55,5 @@
     </a>
   </nav>
 </section>
-<div class="headerGlobal__menuOverlay"></div>
+
+<div class="headerGlobal__menuOverlay" (click)="mostraMenu()"></div>

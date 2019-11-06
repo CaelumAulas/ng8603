@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
     './header-search.css'
   ]
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+
+  statusMenu = false;
+
+  mostraMenu (){
+    this.statusMenu = !this.statusMenu;
+  }
+
+}
