@@ -15,3 +15,4 @@
 
 ## Ajudas em decisões tecnicas de projetos
 - https://medium.com/building-nubank/https-medium-com-freire-why-nubank-chose-flutter-61b80b568772
+- https://hipsters.tech/react-native-hipsters-148/
