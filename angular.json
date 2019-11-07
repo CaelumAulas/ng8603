@@ -5,10 +5,16 @@
   "projects": {
     "ng8603": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineStyle": true,
+           "spec": false,
+          "export": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "cmail",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
