@@ -29,3 +29,10 @@
 ## Lib maluca de gerar formulários
 - https://github.com/valleweb/valleForm
 - Usa a ideia de ter um form builder
+
+
+## Animações
+- https://airbnb.design/lottie/
+- http://prinzhorn.github.io/skrollr/
+- https://www.awwwards.com/
+- https://tympanus.net/codrops/
