@@ -36,3 +36,7 @@
 - http://prinzhorn.github.io/skrollr/
 - https://www.awwwards.com/
 - https://tympanus.net/codrops/
+
+
+## Ouça com calma, entendendo que terão algumas regras cagadas, mas o conteudo é bom
+- https://www.youtube.com/channel/UCib793mnUOhWymCh2VJKplQ
