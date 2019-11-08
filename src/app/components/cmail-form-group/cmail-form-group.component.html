@@ -3,7 +3,10 @@
     <div class="mdl-textfield mdl-textfield--floating-label">
       <ng-content></ng-content>
       <span class="mdl-textfield__error">Informar um email é obrigatório!</span>
-      <label class="mdl-textfield__label" for="para">Para: </label>
+      <label
+        class="mdl-textfield__label"
+        for="para">{{conteudoDaLabel}}:
+      </label>
       <span class="mdl-textfield__formline"></span>
     </div>
 </div>
