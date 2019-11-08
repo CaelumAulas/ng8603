@@ -1,7 +1,27 @@
 
 <form>
-    <cmail-form-group></cmail-form-group>
-    <!-- A meta é fazer esse cara mandar um "hello carregou" -->
+
+    <!-- [Para]
+    <div class="cmailInputForm">
+        <div class="mdl-textfield mdl-textfield--floating-label"
+          [ngClass]="{'is-invalid': destinatario.invalid && destinatario.touched}">
+          <input email #destinatario="ngModel" [(ngModel)]="email.destinatario" required type="email"
+            name="para" id="para" placeholder=" " class="mdl-textfield__input">
+          <span class="mdl-textfield__error">Informar um email é obrigatório!</span>
+          <label class="mdl-textfield__label" for="para">Para: </label>
+          <span class="mdl-textfield__formline"></span>
+        </div>
+      </div>
+
+      ./[Para] -->
+
+    <cmail-form-group>
+        <input
+          type="email" name="para" id="para"
+          placeholder="Bagulhos" cmailFormInput />
+          <!-- remove o class="" -->
+    </cmail-form-group>
+
 </form>
 
 
