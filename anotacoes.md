@@ -1,3 +1,7 @@
+## Como usar o zsh?
+- https://ohmyz.sh/
+- Let zsh as default terminal: http://osxdaily.com/2012/03/21/change-shell-mac-os-x/
+
 ## Pare de chutar css
 - https://www.youtube.com/watch?v=5PS6ku8NzIE&list=PLirko8T4cEmx5eBb1-9j6T6Gl4aBtZ_5x
   - https://medium.com/collabcode/pare-de-chutar-e-aprenda-como-funciona-flexbox-01-f75be5f35d3d

@@ -7,6 +7,7 @@ import { CaixaDeEntradaModule } from './modules/caixa-de-entrada/caixa-de-entrad
 // import { HeaderComponent } from './components/header/header.component';
 import { RoteamentoModule } from './routes';
 import { LoginModule } from './modules/login/login.module';
+import { CadastroModule } from './modules/cadastro/cadastro.module';
 
 @NgModule({
   declarations: [  // Components
@@ -16,6 +17,7 @@ import { LoginModule } from './modules/login/login.module';
     BrowserModule,
     FormsModule,
     CaixaDeEntradaModule,
+    CadastroModule,
     LoginModule,
     RoteamentoModule
   ],
