@@ -1,15 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'cmail-cadastro',
   templateUrl: './cadastro.component.html',
   styles: []
 })
-export class CadastroComponent implements OnInit {
+export class CadastroComponent {
+  formCadastro = new FormGroup({
+    nome: new FormControl('', [Validators.required]),
+    usuario: new FormControl('', [Validators.required]),
+    telefone: new FormControl('', [Validators.required]),
+    avatar: new FormControl('', [Validators.required]),
+  });
 
-  constructor() { }
-
-  ngOnInit() {
+  marcaCamposComoTouched() {
+    const formControlKeys = Object.keys(this.formCadastro.controls);
+    formControlKeys.forEach((formControlName) => {
+      this.formCadastro.get(formControlName).markAsTouched({ onlySelf: true });
+    })
   }
 
+  handleInput() {
+    console.log(this.formCadastro.get('nome').touched)
+    localStorage.setItem('/cadastro[form]', JSON.stringify(this.formCadastro.value));
+  }
+  handleCadastrarUsuario() {
+    this.marcaCamposComoTouched();
+
+    console.log('form ta valido?', this.formCadastro.valid);
+    console.log(this.formCadastro.controls);
+  }
 }

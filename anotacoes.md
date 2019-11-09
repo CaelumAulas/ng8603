@@ -40,3 +40,37 @@
 
 ## Ouça com calma, entendendo que terão algumas regras cagadas, mas o conteudo é bom
 - https://www.youtube.com/channel/UCib793mnUOhWymCh2VJKplQ
+
+
+## Sobre angular
+- time do itau: https://hipsters.tech/cultura-frontend-no-itau-hipsters-on-the-road-13/
+- Andre staltz (tem mts tutoriais) implementando "o rxjs na mao": https://www.youtube.com/watch?v=uQ1zhJHclvs
+
+
+## Coisas de front gerais 
+- https://hipsters.tech/microfrontends-hipsters-164/
+- https://hipsters.tech/javascript-manual-de-sobrevivencia-2020-hipsters-169/
+
+
+## Dicas de aprendizado
+- https://hipsters.tech/mais-produtividade-hipsters-125/
+- https://podcasts.apple.com/br/podcast/hipsters-ponto-tech/id1133325943
+- https://play.google.com/store/apps/details?id=com.google.android.apps.podcasts&hl=en 
+- https://www.coursera.org/learn/learning-how-to-learn
+
+/produtos
+  - react
+/carrinho-de-compras
+  - react
+
+
+
+## Libs de forms no react (sem elas é triste)
+- https://github.com/Rocketseat/unform
+- https://github.com/jaredpalmer/formik
+
+
+## Coisas para seguir
+- https://github.com/jaredpalmer/
+- https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/README.md
+- https://twitter.com/getify/

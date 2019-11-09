@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CadastroComponent } from './cadastro.component';
 import { SharedComponentsModule } from '../../components/shared-components.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -10,6 +11,7 @@ import { SharedComponentsModule } from '../../components/shared-components.modul
   imports: [
     CommonModule,
     SharedComponentsModule,
+    ReactiveFormsModule,
   ],
   exports: [CadastroComponent]
 })

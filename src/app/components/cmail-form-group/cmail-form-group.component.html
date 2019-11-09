@@ -1,6 +1,7 @@
 <div class="cmailInputForm">
-    <!-- [ngClass]="{'is-invalid': campo.invalid && campo.touched}" -->
-    <div class="mdl-textfield mdl-textfield--floating-label">
+    <div
+      [ngClass]="{'is-invalid': campo.invalid && campo.touched}"
+      class="mdl-textfield mdl-textfield--floating-label">
       <ng-content></ng-content>
       <span class="mdl-textfield__error">Informar um email é obrigatório!</span>
       <label

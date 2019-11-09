@@ -1,34 +1,28 @@
+<form
+   [formGroup]="formCadastro"
+  (ngSubmit)="handleCadastrarUsuario()" (input)="handleInput()">
 
-<form>
-
-    <!-- [Para]
-    <div class="cmailInputForm">
-        <div class="mdl-textfield mdl-textfield--floating-label"
-          [ngClass]="{'is-invalid': destinatario.invalid && destinatario.touched}">
-          <input email #destinatario="ngModel" [(ngModel)]="email.destinatario" required type="email"
-            name="para" id="para" placeholder=" " class="mdl-textfield__input">
-          <span class="mdl-textfield__error">Informar um email é obrigatório!</span>
-          <label class="mdl-textfield__label" for="para">Para: </label>
-          <span class="mdl-textfield__formline"></span>
-        </div>
-      </div>
-
-      ./[Para] -->
-
-    <cmail-form-group>
-        <input
-          type="email" name="para" id="para"
-          placeholder="Bagulhos" cmailFormInput />
+    <cmail-form-group [campo]="formCadastro.get('nome')">
+        <input name="nome" formControlName="nome"
+          placeholder="Nome" cmailFormInput />
     </cmail-form-group>
 
+    <cmail-form-group [campo]="formCadastro.get('usuario')">
+        <input name="usuario" formControlName="usuario"
+          placeholder="Usuário" cmailFormInput />
+    </cmail-form-group>
+
+    <cmail-form-group [campo]="formCadastro.get('telefone')">
+        <input name="telefone" formControlName="telefone"
+          placeholder="Telefone" cmailFormInput />
+    </cmail-form-group>
+
+    <cmail-form-group [campo]="formCadastro.get('avatar')">
+        <input name="avatar" formControlName="avatar"
+          placeholder="Avatar" cmailFormInput />
+    </cmail-form-group>
+
+    <button>
+      Cadastrar agora!!!!!!!
+    </button>
 </form>
-
-
-
-Form
-
-- nome
-- username
-- senha
-- telefone
-
