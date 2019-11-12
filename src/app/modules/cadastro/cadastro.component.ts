@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'cmail-cadastro',
@@ -33,22 +34,37 @@ export class CadastroComponent {
     avatar: new FormControl('', Validators.required),
   });
 
-  marcaCamposComoTouched() {
-    const formControlKeys = Object.keys(this.formCadastro.controls);
-    formControlKeys.forEach((formControlName) => {
-      this.formCadastro.get(formControlName).markAsTouched({ onlySelf: true });
-    })
-  }
+  constructor(private http: HttpClient){}
 
-  handleInput() {
-    console.log(this.formCadastro.get('nome').touched)
-    localStorage.setItem('/cadastro[form]', JSON.stringify(this.formCadastro.value));
-  }
+  // marcaCamposComoTouched() {
+  //   const formControlKeys = Object.keys(this.formCadastro.controls);
+  //   formControlKeys.forEach((formControlName) => {
+  //     this.formCadastro.get(formControlName).markAsTouched({ onlySelf: true });
+  //   })
+  // }
 
   handleCadastrarUsuario() {
-    this.marcaCamposComoTouched();
 
-    console.log('form ta valido?', this.formCadastro.valid);
-    console.log(this.formCadastro.controls);
+    if(this.formCadastro.invalid){
+      this.formCadastro.markAllAsTouched()
+      return;
+    }
+
+    let formIngles = {
+      name: this.formCadastro.get('nome').value,
+      username: this.formCadastro.get('usuario').value,
+      phone: this.formCadastro.get('telefone').value,
+      password: this.formCadastro.get('senha').value,
+      avatar: this.formCadastro.get('avatar').value
+    }
+
+    this.http.post(
+      'http://localhost:3200/users',
+      formIngles
+    ).subscribe()
+
+    console.log(formIngles);
+
+
   }
 }

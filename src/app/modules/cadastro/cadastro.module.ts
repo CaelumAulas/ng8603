@@ -4,7 +4,7 @@ import { CadastroComponent } from './cadastro.component';
 import { SharedComponentsModule } from '../../components/shared-components.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [CadastroComponent],
@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     SharedComponentsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [CadastroComponent]
 })

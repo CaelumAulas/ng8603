@@ -6,6 +6,7 @@ import { Component, ElementRef, Input } from '@angular/core';
 })
 export class CmailFormGroupComponent {
   @Input() campo;
+
   elemento;
   conteudoDaLabel: string;
   constructor(elemento: ElementRef) {

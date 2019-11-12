@@ -7,8 +7,9 @@
       <div class="mdl-grid">
         <form
           [formGroup]="formCadastro"
-          (ngSubmit)="handleCadastrarUsuario()" (input)="handleInput()"
+          (ngSubmit)="handleCadastrarUsuario()"
         >
+
           <cmail-form-group [campo]="formCadastro.get('nome')">
             <input maxlength="10" required name="nome" formControlName="nome" placeholder="Nome" cmailFormInput />
             <span
