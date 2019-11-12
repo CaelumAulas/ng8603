@@ -74,3 +74,11 @@
 - https://github.com/jaredpalmer/
 - https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/README.md
 - https://twitter.com/getify/
+
+
+#Acessibilidade
+
+WAI-ARIA
+https://www.w3.org/WAI/standards-guidelines/aria/
+https://developer.mozilla.org/pt-BR/docs/Web/Accessibility/ARIA
+
