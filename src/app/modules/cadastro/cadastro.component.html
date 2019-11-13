@@ -3,8 +3,12 @@
   <main class="mdl-layout__content">
     <div class="page-content">
 
-
       <div class="mdl-grid">
+
+        <p *ngIf="mensagem">
+          {{mensagem}}
+        </p>
+
         <form
           [formGroup]="formCadastro"
           (ngSubmit)="handleCadastrarUsuario()"
@@ -88,7 +92,23 @@
 
           <cmail-form-group [campo]="formCadastro.get('avatar')">
             <input name="avatar" formControlName="avatar" placeholder="Avatar" cmailFormInput />
-            <span class="mdl-textfield__error">Informar um avatar é obrigatório!</span>
+            <span *ngIf="formCadastro.get('avatar').getError('required')" class="mdl-textfield__error">
+              Informar um avatar é obrigatório!
+            </span>
+
+            <span *ngIf="formCadastro.get('avatar').status == 'PENDING' "
+              class="mdl-textfield__error mdl-textfield__checking">
+              verificando ...
+            </span>
+
+            <span *ngIf="formCadastro.get('avatar').status == 'VALID' "
+              class="mdl-textfield__error mdl-textfield__valid">
+              URL válida!! :D
+            </span>
+
+            <span *ngIf="formCadastro.get('avatar').getError('urlInvalida')" class="mdl-textfield__error">
+              A URL está inválida
+            </span>
           </cmail-form-group>
 
           <div class="mdl-card__actions">

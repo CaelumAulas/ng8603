@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { UserInputDTO } from 'src/app/models/dto/user-input';
+import { map, catchError } from "rxjs/operators";
 
 @Component({
   selector: 'cmail-cadastro',
@@ -8,6 +10,10 @@ import { HttpClient } from '@angular/common/http';
   styles: []
 })
 export class CadastroComponent {
+
+  mensagem = "";
+
+  constructor(private http: HttpClient) { }
 
   formCadastro = new FormGroup({
     nome: new FormControl('',
@@ -31,17 +37,39 @@ export class CadastroComponent {
       Validators.pattern(/^\d{8,9}$/)
     ]),
 
-    avatar: new FormControl('', Validators.required),
+    avatar: new FormControl('', Validators.required, this.validaAvatar.bind(this)),
   });
 
-  constructor(private http: HttpClient){}
+  validaAvatar(control: FormControl){
 
-  // marcaCamposComoTouched() {
-  //   const formControlKeys = Object.keys(this.formCadastro.controls);
-  //   formControlKeys.forEach((formControlName) => {
-  //     this.formCadastro.get(formControlName).markAsTouched({ onlySelf: true });
-  //   })
-  // }
+    const validationError = {
+      urlInvalida: true
+    }
+
+    return this
+            .http
+            .head(control.value, { observe: "response"})
+            .pipe(
+              map((httpResponse) => {
+                console.log(httpResponse);
+                const type = httpResponse.headers.get('Content-Type')
+
+                //se não for uma imagem, então é invalido
+                if (!type.includes('image')) {
+                  return validationError
+                }
+
+                //se nao tiver erros, retornamos um null
+                return null
+              })
+              ,catchError( (erro) => {
+                console.log(erro);
+                //se tiver erros, retornamos um objeto com detalhes do erro
+                return [validationError]
+              })
+            )
+
+  }
 
   handleCadastrarUsuario() {
 
@@ -50,21 +78,35 @@ export class CadastroComponent {
       return;
     }
 
-    let formIngles = {
-      name: this.formCadastro.get('nome').value,
-      username: this.formCadastro.get('usuario').value,
-      phone: this.formCadastro.get('telefone').value,
-      password: this.formCadastro.get('senha').value,
-      avatar: this.formCadastro.get('avatar').value
-    }
+    //DTO - Data transfer object
+    let userDTO = new UserInputDTO(this.formCadastro.value);
 
     this.http.post(
       'http://localhost:3200/users',
-      formIngles
-    ).subscribe()
-
-    console.log(formIngles);
-
+      userDTO
+    ).subscribe(
+      (resposta: any) => {
+        console.log(resposta);
+        //template string
+        this.mensagem = `${resposta.email} cadastrado com sucesso`;
+        this.formCadastro.reset();
+      }
+      , (erro) => {
+        console.error(erro);
+        console.error('deu ruim')
+      }
+    )
 
   }
+}
+
+
+//function expression
+function haha(){
+
+}
+
+//arrow function
+() => {
+
 }
