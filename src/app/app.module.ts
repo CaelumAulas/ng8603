@@ -5,9 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CaixaDeEntradaModule } from './modules/caixa-de-entrada/caixa-de-entrada.module';
 // import { HeaderComponent } from './components/header/header.component';
-import { RoteamentoModule } from './routes';
+
 import { LoginModule } from './modules/login/login.module';
 import { CadastroModule } from './modules/cadastro/cadastro.module';
+import { AppRoutingModule } from "./app-routing.module";
 
 @NgModule({
   declarations: [  // Components
@@ -19,7 +20,7 @@ import { CadastroModule } from './modules/cadastro/cadastro.module';
     CaixaDeEntradaModule,
     CadastroModule,
     LoginModule,
-    RoteamentoModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
