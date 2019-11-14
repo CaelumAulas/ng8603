@@ -5,6 +5,7 @@ import { Component, ElementRef, Input } from '@angular/core';
   templateUrl: './cmail-form-group.component.html'
 })
 export class CmailFormGroupComponent {
+
   @Input() campo;
 
   elemento;
