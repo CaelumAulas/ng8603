@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { PageDataService } from 'src/app/services/page-data.service';
 
 @Component({
@@ -13,18 +13,21 @@ export class HeaderComponent {
 
   statusMenu = false;
   titulo = "";
+  @Output() filter = new EventEmitter<string>()
 
-  constructor(private pageData: PageDataService){
+  constructor(pageData: PageDataService){
 
     pageData.tituloDaPagina
             .subscribe((tituloNovo) =>{
               this.titulo =  tituloNovo;
             })
-
   }
 
   mostraMenu (){
     this.statusMenu = !this.statusMenu;
   }
 
+  filtrar(inputBusca: HTMLInputElement){
+    this.filter.emit(inputBusca.value)
+  }
 }

@@ -7,11 +7,13 @@ import { CaixaDeEntradaRoutingModule } from './caixa-de-entrada-routing.module';
 import { ListItemComponent } from './list-item.component';
 import { EmailService } from 'src/app/services/email.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MarcadorPipe } from './marcador.pipe';
 
 @NgModule({
   declarations: [
     CaixaDeEntradaComponent,
-    ListItemComponent
+    ListItemComponent,
+    MarcadorPipe
   ],
   imports: [
     SharedComponentsModule,
