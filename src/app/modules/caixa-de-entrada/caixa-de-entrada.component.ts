@@ -16,24 +16,27 @@ import { EmailService } from 'src/app/services/email.service';
 })
 export class CaixaDeEntradaComponent implements OnInit {
 
+  private _statusFormEmail = false;
+  listaDeEmails: Email[] = [];
+  email = new Email();
+
   constructor(private emailService: EmailService) { }
 
   ngOnInit() {
+    this.listarEmails();
+  }
+
+  listarEmails() {
+
     this.emailService
         .listar()
         .subscribe(
           (listaEmailApi) => {
-            console.log(listaEmailApi);
-
             this.listaDeEmails = listaEmailApi;
-
+            console.log(this.listaDeEmails)
           }
         )
   }
-
-  private _statusFormEmail = false;
-  email = new Email();
-  listaDeEmails: Email[] = [];
 
   get statusFormEmail() {
     return this._statusFormEmail
@@ -53,19 +56,33 @@ export class CaixaDeEntradaComponent implements OnInit {
     this.emailService
         .enviar(this.email)
         .subscribe(
-          (sucesso) => {
-            console.log(sucesso);
+          () => {
+            this.listarEmails();
+            this.toggleEmail();
+            this.email = new Email();
+            formEmail.reset()
           },
           (erro) => {
             console.error(erro);
           }
         )
 
-    this.listaDeEmails.push(this.email);
-    console.log(this.listaDeEmails);
-    this.email = new Email();
+  }
 
-    formEmail.reset()
+  removerEmail(evento, emailId:string){
+    //console.log(evento);
+
+    if(confirm('Vc tem certeza?')){
+      this.emailService
+          .deletar(emailId)
+          .subscribe(
+            () => {
+              console.log(`apagou com sucesso`);
+              this.listarEmails();
+            }
+          )
+    }
+
   }
 
 }

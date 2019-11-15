@@ -5,10 +5,13 @@
 
       <ul>
           <cmail-list-item
-            *ngFor="let email of listaDeEmails"
+            *ngFor="let email of listaDeEmails.reverse()"
             [destinatario]="email.destinatario"
             [assunto]="email.assunto"
             [conteudo]="email.conteudo"
+            [dataEnvio]="email.dataEnvio"
+            [title]="email.id"
+            (clickNaLixeira)="removerEmail($event,email.id)"
           >
           </cmail-list-item>
       </ul>
@@ -29,6 +32,7 @@
               <h2 class="newEmail__title mdl-card__title-text">Novo Email</h2>
             </div>
             <div class="newEmail__body mdl-card__supporting-text">
+
               <!-- Form Fields -->
               <!-- [Para] -->
               <div class="cmailInputForm">
@@ -83,4 +87,3 @@
     </div>
   </main>
 </div>
-

@@ -1,20 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { map, catchError } from "rxjs/operators";
 import { UserService } from 'src/app/services/user.service';
+import { PageDataService } from 'src/app/services/page-data.service';
 
 @Component({
   selector: 'cmail-cadastro',
   templateUrl: './cadastro.component.html',
   styles: []
 })
-export class CadastroComponent {
+export class CadastroComponent implements OnInit {
 
   mensagem = "";
 
   constructor(private http: HttpClient,
-              private userService: UserService) { }
+              private userService: UserService,
+              private dataService: PageDataService) { }
+
+  ngOnInit(){
+
+    this.dataService.atualizaTitulo('Cadastro')
+  }
 
   formCadastro = new FormGroup({
     nome: new FormControl('',
@@ -92,15 +99,4 @@ export class CadastroComponent {
         )
 
   }
-}
-
-
-//function expression
-function haha(){
-
-}
-
-//arrow function
-() => {
-
 }

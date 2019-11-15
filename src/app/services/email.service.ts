@@ -29,12 +29,12 @@ export class EmailService {
 
   listar(): Observable<Email[]> {
     return this.http
-                .get(this.url, this.httpOptions)
+                .get<EmailApi[]>(this.url, this.httpOptions)
                 .pipe(
                   map(
-                    (listaEmailsApi: any[]) => {
+                    (listaEmailsApi) => {
 
-                      return listaEmailsApi.map((emailIngles: EmailApi)=> {
+                      return listaEmailsApi.map((emailIngles)=> {
 
                         const emailDTO: Email = {
                           destinatario: emailIngles.to,
@@ -51,6 +51,10 @@ export class EmailService {
                     }
                   )
                 )
+  }
+
+  deletar(idEmail: string){
+    return this.http.delete(`${this.url}/${idEmail}`, this.httpOptions);
   }
 
 }
