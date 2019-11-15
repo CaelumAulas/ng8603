@@ -4,11 +4,13 @@
     <div class="page-content">
 
       <ul>
-        <li *ngFor="let email of listaDeEmails">
-          destinatário: {{email.destinatario}} <br>
-          assunto: {{email.assunto}} <br>
-          conteudo: {{email.conteudo}}
-        </li>
+          <cmail-list-item
+            *ngFor="let email of listaDeEmails"
+            [destinatario]="email.destinatario"
+            [assunto]="email.assunto"
+            [conteudo]="email.conteudo"
+          >
+          </cmail-list-item>
       </ul>
 
       <div class="mdl-grid">
