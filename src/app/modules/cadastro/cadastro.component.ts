@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { UserInputDTO } from 'src/app/models/dto/user-input';
 import { map, catchError } from "rxjs/operators";
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'cmail-cadastro',
@@ -13,7 +13,8 @@ export class CadastroComponent {
 
   mensagem = "";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private userService: UserService) { }
 
   formCadastro = new FormGroup({
     nome: new FormControl('',
@@ -78,24 +79,17 @@ export class CadastroComponent {
       return;
     }
 
-    //DTO - Data transfer object
-    let userDTO = new UserInputDTO(this.formCadastro.value);
-
-    this.http.post(
-      'http://localhost:3200/users',
-      userDTO
-    ).subscribe(
-      (resposta: any) => {
-        console.log(resposta);
-        //template string
-        this.mensagem = `${resposta.email} cadastrado com sucesso`;
-        this.formCadastro.reset();
-      }
-      , (erro) => {
-        console.error(erro);
-        console.error('deu ruim')
-      }
-    )
+    this.userService
+        .cadastrar(this.formCadastro.value)
+        .subscribe(
+          (resposta: any) => {
+            this.mensagem = `${resposta.email} cadastrado com sucesso`;
+            this.formCadastro.reset();
+          }
+          , (erro) => {
+            console.error(erro);
+          }
+        )
 
   }
 }
