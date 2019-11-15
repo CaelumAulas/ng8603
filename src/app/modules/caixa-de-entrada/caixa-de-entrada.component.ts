@@ -19,11 +19,21 @@ export class CaixaDeEntradaComponent implements OnInit {
   constructor(private emailService: EmailService) { }
 
   ngOnInit() {
+    this.emailService
+        .listar()
+        .subscribe(
+          (listaEmailApi) => {
+            console.log(listaEmailApi);
+
+            this.listaDeEmails = listaEmailApi;
+
+          }
+        )
   }
 
   private _statusFormEmail = false;
   email = new Email();
-  listaDeEmails = [];
+  listaDeEmails: Email[] = [];
 
   get statusFormEmail() {
     return this._statusFormEmail
