@@ -19,4 +19,8 @@ export class UserService {
 
   }
 
+  validarUsuario(usuario: string): Observable<Object> {
+    return this.http.get(`${this.url}/validation/${usuario}`)
+  }
+
 }

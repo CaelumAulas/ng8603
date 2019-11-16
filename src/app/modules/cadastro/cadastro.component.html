@@ -65,6 +65,18 @@
             <span *ngIf="formCadastro.get('usuario').getError('pattern')" class="mdl-textfield__error">
               Nao pode ter caracteres especiais
             </span>
+
+            <span *ngIf="formCadastro.get('usuario').status == 'PENDING' " class="mdl-textfield__error mdl-textfield__checking">
+              verificando ...
+            </span>
+
+            <span *ngIf="formCadastro.get('usuario').status == 'VALID' " class="mdl-textfield__error mdl-textfield__valid">
+              username válido!! :D
+            </span>
+
+            <span *ngIf="formCadastro.get('usuario').getError('username')" class="mdl-textfield__error">
+              {{formCadastro.get('usuario').getError('username')}}
+            </span>
           </cmail-form-group>
 
           <cmail-form-group [campo]="formCadastro.get('senha')">

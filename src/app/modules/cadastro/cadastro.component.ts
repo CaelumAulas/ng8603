@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { map, catchError } from "rxjs/operators";
 import { UserService } from 'src/app/services/user.service';
 import { PageDataService } from 'src/app/services/page-data.service';
@@ -35,7 +35,7 @@ export class CadastroComponent implements OnInit {
       Validators.minLength(3),
       Validators.maxLength(40),
       Validators.pattern('[a-z0-9]+')
-    ]),
+    ], this.validaUsuario.bind(this)),
     senha: new FormControl('', [
       Validators.required,
       Validators.minLength(6)
@@ -46,7 +46,25 @@ export class CadastroComponent implements OnInit {
     ]),
 
     avatar: new FormControl('', Validators.required, this.validaAvatar.bind(this)),
-  });
+  }, {updateOn: 'blur'});
+
+  validaUsuario(control: FormControl){
+    return this.userService
+                .validarUsuario(control.value)
+                .pipe(
+                  map(
+                    (response) => {
+                      console.log(response);
+                      return null
+                    }
+                  ),
+                  catchError((erro: HttpErrorResponse) => {
+                    console.log(erro.error.message);
+                    return [{username: erro.error.message}]
+
+                  })
+                )
+  }
 
   validaAvatar(control: FormControl){
 
