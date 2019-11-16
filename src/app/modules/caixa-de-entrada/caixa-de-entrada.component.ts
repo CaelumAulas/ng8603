@@ -89,7 +89,7 @@ export class CaixaDeEntradaComponent implements OnInit {
 
   }
 
-  get listaFiltrada(){
+  get listaFiltrada() {
     return this.listaDeEmails.filter( (email) => {
       if(
         email.destinatario.toLowerCase().includes(this.termoDeFiltro.toLowerCase())

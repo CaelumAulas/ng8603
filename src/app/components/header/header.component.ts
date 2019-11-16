@@ -13,7 +13,7 @@ export class HeaderComponent {
 
   statusMenu = false;
   titulo = "";
-  @Output() filter = new EventEmitter<string>()
+  @Output() filter = new EventEmitter<string>();
 
   constructor(pageData: PageDataService){
 
